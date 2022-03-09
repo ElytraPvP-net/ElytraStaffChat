@@ -1,0 +1,46 @@
+joinMessage: "&4&l(&a+&4&l) &c%player_name%"
+quitMessage: "&4&l(&c-&4&l) &c%player_name%"
+
+formats:
+  owner:
+    channel: "&4&l(&c&lStaff&4&l) "
+    prefix: "&c&lOwner "
+    name: "&f%player_name%"
+    suffix: " &7» "
+    messageColor: "&c"
+    message: "%message%"
+  admin:
+    channel: "&4&l(&c&lStaff&4&l) "
+    prefix: "&6&lAdmin "
+    name: "&f%player_name%"
+    suffix: " &7» "
+    messageColor: "&6"
+    message: "%message%"
+  mod:
+    channel: "&4&l(&c&lStaff&4&l) "
+    prefix: "&b&lMod "
+    name: "&f%player_name%"
+    suffix: " &7» "
+    messageColor: "&b"
+    message: "%message%"
+  trial:
+    channel: "&4&l(&c&lStaff&4&l) "
+    prefix: "&a&lTrial "
+    name: "&f%player_name%"
+    suffix: " &7» "
+    messageColor: "&a"
+    message: "%message%"
+  builder:
+    channel: "&4&l(&c&lStaff&4&l) "
+    prefix: "&e&lBuilder "
+    name: "&f%player_name%"
+    suffix: " &7» "
+    messageColor: "&e"
+    message: "%message%"
+  developer:
+    channel: "&4&l(&c&lStaff&4&l) "
+    prefix: "&9&lDeveloper "
+    name: "&f%player_name%"
+    suffix: " &7» "
+    messageColor: "&9"
+    message: "%message%"

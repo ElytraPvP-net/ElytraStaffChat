@@ -1,0 +1,7 @@
+name: ElytraStaffChat
+version: "1.0"
+main: net.elytrapvp.elytrastaffchat.ElytraStaffChat
+description: Staff Chat Plugin for ElytraPvP
+
+commands:
+  staffchat:
