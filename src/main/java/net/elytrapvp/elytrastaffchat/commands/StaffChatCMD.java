@@ -123,6 +123,6 @@ public class StaffChatCMD extends Command {
         }
 
         // Logs the message to BungeeCord.
-        System.out.println(newMessage);
+        System.out.println(ChatUtils.translate(newMessage));
     }
 }

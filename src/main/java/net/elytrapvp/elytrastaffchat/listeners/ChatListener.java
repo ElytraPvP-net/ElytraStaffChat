@@ -109,6 +109,6 @@ public class ChatListener implements Listener {
         }
 
         // Logs the chat message to BungeeCord
-        System.out.println(newMessage);
+        System.out.println(ChatUtils.translate(newMessage));
     }
 }
