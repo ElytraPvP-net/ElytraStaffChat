@@ -18,8 +18,8 @@ public class MySQL {
     private final int port;
 
     /**
-     * Loads the
-     * @param plugin
+     * Loads the MySQL database connection info.
+     * @param plugin Instance of the plugin.
      */
     public MySQL(ElytraStaffChat plugin) {
         this.plugin = plugin;
