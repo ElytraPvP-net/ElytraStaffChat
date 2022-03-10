@@ -44,6 +44,12 @@ public class StaffChatCMD extends Command {
 
         // If there are no arguments, toggle if the player is using the channel.
         if(args.length == 0) {
+            // Prevent sending a message if visibility is off.
+            if(!plugin.getChannelManager().canSeeChannel(player)) {
+                ChatUtils.chat(player, "&c&LError &8» &cYou have staff chat disabled! Use /sc toggle to enable it.");
+                return;
+            }
+
             plugin.getChannelManager().toggleUsingChannel(player);
 
             if(plugin.getChannelManager().isUsingChannel(player)) {
@@ -67,6 +73,12 @@ public class StaffChatCMD extends Command {
             else {
                 ChatUtils.chat(player, "&a&lChat &8» &aYou can no longer see the staff channel.");
             }
+            return;
+        }
+
+        // Prevent sending a message if visibility is off.
+        if(!plugin.getChannelManager().canSeeChannel(player)) {
+            ChatUtils.chat(player, "&c&LError &8» &cYou have staff chat disabled! Use /sc toggle to enable it.");
             return;
         }
 
