@@ -13,6 +13,7 @@ import net.md_5.bungee.api.plugin.Plugin;
 public final class ElytraStaffChat extends Plugin {
     private ChannelManager channelManager;
     private SettingsManager settingsManager;
+    private MySQL mySQL;
 
     /**
      * This is called when BungeeCord first loads the plugin.
@@ -24,6 +25,11 @@ public final class ElytraStaffChat extends Plugin {
 
         // Creates or Loads the configuration file.
         settingsManager = new SettingsManager(this);
+
+        // Connects to the mysql database.
+        mySQL = new MySQL(this);
+        // Connection is opened async.
+        getProxy().getScheduler().runAsync(this, () -> mySQL.openConnection());
 
         // We need to tell BungeeCord that our listeners exist for them to work.
         ProxyServer.getInstance().getPluginManager().registerListener(this, new ChatListener(this));
@@ -40,6 +46,14 @@ public final class ElytraStaffChat extends Plugin {
      */
     public ChannelManager getChannelManager() {
         return channelManager;
+    }
+
+    /**
+     * Be able to connect to MySQL.
+     * @return MySQL.
+     */
+    public MySQL getMySQL() {
+        return mySQL;
     }
 
     /**

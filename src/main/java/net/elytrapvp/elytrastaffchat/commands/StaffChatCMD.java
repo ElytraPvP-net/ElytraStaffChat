@@ -8,7 +8,10 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.config.Configuration;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.UUID;
 
 /**
  * This class runs the staff chat command, which can toggle staff chat visibility and usability, or send a message.
@@ -124,5 +127,26 @@ public class StaffChatCMD extends Command {
 
         // Logs the message to BungeeCord.
         System.out.println(ChatUtils.translate(newMessage));
+
+        // Logs the message to MySQL.
+        String name = player.getName();
+        String uuid = player.getUniqueId().toString();
+        String server = player.getServer().getInfo().getName();
+        String channel = "staff";
+
+        plugin.getProxy().getScheduler().runAsync(plugin, () -> {
+            try {
+                PreparedStatement statement = plugin.getMySQL().getConnection().prepareStatement("INSERT INTO chat_logs (server,channel,uuid,username,message) VALUES (?,?,?,?,?)");
+                statement.setString(1, server);
+                statement.setString(2, channel);
+                statement.setString(3, uuid);
+                statement.setString(4, name);
+                statement.setString(5, message);
+                statement.executeUpdate();
+            }
+            catch (SQLException exception) {
+                exception.printStackTrace();
+            }
+        });
     }
 }

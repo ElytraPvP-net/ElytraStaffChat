@@ -4,6 +4,15 @@ joinMessage: "&4&l(&a+&4&l) &c%player_name%"
 # The message sent to all staff members when a staff member leaves.
 quitMessage: "&4&l(&c-&4&l) &c%player_name%"
 
+# Connects to the MySQL Database
+MySQL:
+  host: localhost
+  port: 3306
+  database: database
+  username: username
+  password: password
+  useSSL: true
+
 # Lists the various chat formats and their values.
 # Each has the permission format.[name].
 formats:

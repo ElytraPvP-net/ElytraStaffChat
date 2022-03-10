@@ -9,6 +9,9 @@ import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.event.EventHandler;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /**
  * This listens to the ChatEvent event, which is called every time a player send a chat message.
  * We use this to automatically send a message to the staff chat channel if the player has the channel toggled.
@@ -110,5 +113,26 @@ public class ChatListener implements Listener {
 
         // Logs the chat message to BungeeCord
         System.out.println(ChatUtils.translate(newMessage));
+
+        // Logs the message to MySQL.
+        String name = player.getName();
+        String uuid = player.getUniqueId().toString();
+        String server = player.getServer().getInfo().getName();
+        String channel = "staff";
+
+        plugin.getProxy().getScheduler().runAsync(plugin, () -> {
+            try {
+                PreparedStatement statement = plugin.getMySQL().getConnection().prepareStatement("INSERT INTO chat_logs (server,channel,uuid,username,message) VALUES (?,?,?,?,?)");
+                statement.setString(1, server);
+                statement.setString(2, channel);
+                statement.setString(3, uuid);
+                statement.setString(4, name);
+                statement.setString(5, event.getMessage());
+                statement.executeUpdate();
+            }
+            catch (SQLException exception) {
+                exception.printStackTrace();
+            }
+        });
     }
 }
