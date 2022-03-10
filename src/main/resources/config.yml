@@ -1,6 +1,11 @@
+# The message sent to all staff members when a staff member joins.
 joinMessage: "&4&l(&a+&4&l) &c%player_name%"
+
+# The message sent to all staff members when a staff member leaves.
 quitMessage: "&4&l(&c-&4&l) &c%player_name%"
 
+# Lists the various chat formats and their values.
+# Each has the permission format.[name].
 formats:
   owner:
     channel: "&4&l(&c&lStaff&4&l) "
