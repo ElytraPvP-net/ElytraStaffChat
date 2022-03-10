@@ -11,7 +11,6 @@ import net.md_5.bungee.config.Configuration;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Arrays;
-import java.util.UUID;
 
 /**
  * This class runs the staff chat command, which can toggle staff chat visibility and usability, or send a message.

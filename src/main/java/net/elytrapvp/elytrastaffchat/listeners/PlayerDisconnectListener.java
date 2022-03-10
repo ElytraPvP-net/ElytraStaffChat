@@ -2,7 +2,6 @@ package net.elytrapvp.elytrastaffchat.listeners;
 
 import net.elytrapvp.elytrastaffchat.ElytraStaffChat;
 import net.elytrapvp.elytrastaffchat.utils.ChatUtils;
-import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.PlayerDisconnectEvent;
 import net.md_5.bungee.api.plugin.Listener;

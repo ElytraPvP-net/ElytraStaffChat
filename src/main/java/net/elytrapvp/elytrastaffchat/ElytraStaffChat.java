@@ -4,7 +4,6 @@ import net.elytrapvp.elytrastaffchat.commands.StaffChatCMD;
 import net.elytrapvp.elytrastaffchat.listeners.ChatListener;
 import net.elytrapvp.elytrastaffchat.listeners.PlayerDisconnectListener;
 import net.elytrapvp.elytrastaffchat.listeners.PostLoginListener;
-import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 
 /**
@@ -32,12 +31,12 @@ public final class ElytraStaffChat extends Plugin {
         getProxy().getScheduler().runAsync(this, () -> mySQL.openConnection());
 
         // We need to tell BungeeCord that our listeners exist for them to work.
-        ProxyServer.getInstance().getPluginManager().registerListener(this, new ChatListener(this));
-        ProxyServer.getInstance().getPluginManager().registerListener(this, new PlayerDisconnectListener(this));
-        ProxyServer.getInstance().getPluginManager().registerListener(this, new PostLoginListener(this));
+        getProxy().getPluginManager().registerListener(this, new ChatListener(this));
+        getProxy().getPluginManager().registerListener(this, new PlayerDisconnectListener(this));
+        getProxy().getPluginManager().registerListener(this, new PostLoginListener(this));
 
         // We must also tell BungeeCord that our commands exist.
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new StaffChatCMD(this));
+       getProxy().getPluginManager().registerCommand(this, new StaffChatCMD(this));
     }
 
     /**
